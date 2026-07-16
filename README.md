@@ -1,15 +1,5 @@
 # technitium-docker-migration
 
-```markdown
-# 🐳 Technitium DNS: Bare Metal to Docker Migration
-
-![Status](https://img.shields.io/badge/Status-In_Progress-yellow)
-![Phase](https://img.shields.io/badge/Phase-1_Uninstall-red)
-![License](https://img.shields.io/badge/License-MIT-blue)
-![Docker](https://img.shields.io/badge/Docker-✓-blue)
-![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-OS_64_bit-red)
-```
-
 ## 📖 Project Overview
 
 This repository documents the complete migration of Technitium DNS from a bare metal installation on Raspberry Pi OS Lite 64-bit to a Docker container. The goal is to containerize the DNS service for easier management, better resource isolation, and to establish a foundation for running multiple services on the same server.
