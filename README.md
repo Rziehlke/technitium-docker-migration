@@ -178,6 +178,57 @@ Install the dnsutils package:
 sudo apt install dnsutils
 ```
 
+### Read-only warning messages during dnsutils install
+
+![DNSUtils-Install-Warning-Messages](link)
+
+These warning messages indicate that your Raspberry Pi's filesystem is currently set to **"read-only"**. This means the system is protecting itself from writing any new data to the SD card. 
+
+This is a common issue on Raspberry Pis and usually happens for one of three reasons:
+1. The system detected an SD card error and automatically remounted the drive as read-only to prevent data corruption.
+2. The Pi was not shut down cleanly (e.g., power was pulled unexpectedly).
+3. You have an overlay filesystem enabled (sometimes used in kiosk setups).
+
+Here is how to fix it and get your packages installed:
+
+#### Step 1: Remount the Filesystem as Read-Write
+Run this command to tell the system to allow writes again:
+
+```bash
+sudo mount -o remount,rw /
+```
+
+#### Step 2: Update and Install Again
+Now that the filesystem is writable, try updating your package list and installing the package again:
+
+```bash
+sudo apt update
+sudo apt install dnsutils
+```
+
+#### Step 3: Investigate the Root Cause (Important!)
+If the command worked, your system is temporarily fixed, but you need to figure out *why* it happened so it doesn't happen again.
+
+**Check your filesystem health:**
+Run a disk check on your SD card to see if it has errors:
+```bash
+sudo dmesg | grep -i "error\|ext4\|readonly"
+```
+If you see a lot of red text or ext4 errors, your SD card might be failing or corrupted.
+
+**The best fix:**
+If you see errors, the safest route is to:
+1. Back up any important configs (like your Technitium config folder, if you haven't already).
+2. Reflash your Raspberry Pi OS Lite 64-bit onto the SD card (or a new SD card) using the Raspberry Pi Imager.
+3. Start the Docker migration fresh on a clean, healthy OS.
+
+If you *don't* see any errors after running the `dmesg` command, it might have just been a one-off glitch. Reboot the Pi normally:
+```bash
+sudo reboot
+```
+
+Once it comes back online, try `sudo apt install dnsutils` one more time to ensure it persists across reboots!
+
 ### Port 53 already in use
 Check what is using port 53 and stop it:
 ```bash
