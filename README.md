@@ -185,8 +185,6 @@ During this migration, several issues were encountered and resolved. This sectio
 
 - [ ] Add automated backup solution for Docker volumes
 - [ ] Implement monitoring with Prometheus/Grafana
-- [ ] Add Pi-hole or AdGuard Home as a secondary DNS
-- [ ] Configure DNS-over-HTTPS (DoH) or DNS-over-TLS (DoT)
 
 ## 📄 License
 
