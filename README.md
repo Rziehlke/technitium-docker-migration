@@ -232,6 +232,45 @@ Check the logs for errors:
 docker logs technitium-dns
 ```
 
+### Warning: Remote Host Identification has Changed
+Don't worry! This is a completely normal and common error. Because you reflashed the SD card with a fresh operating system, your Raspberry Pi generated a brand new set of SSH security keys. 
+
+Your Windows 11 PC still remembers the *old* security keys from your previous installation and is correctly warning you that the server's identity has changed. Since you just reinstalled the OS, we know it's safe.
+
+Here is how to fix it on your Windows 11 PC:
+
+### Step 1: Open PowerShell on your Windows 11 PC
+You can use the same PowerShell window where you got the error, or open a new one.
+
+### Step 2: Remove the old SSH key
+Run the following command to tell your PC to forget the old key for that IP address:
+
+```bash
+ssh-keygen -R 192.168.86.10
+```
+
+You should see a message saying something like `# Host 192.168.86.10 found: line 8...` and `Updated C:\Users\rzieh/.ssh/known_hosts successfully.`
+
+### Step 3: Connect again
+Now, try to SSH into your Pi again:
+
+```bash
+ssh pi@192.168.86.10
+```
+
+### Step 4: Accept the new fingerprint
+Because your PC forgot the old key, it will now see the Pi's *new* key. You will be prompted with a message like this:
+
+```text
+The authenticity of host '192.168.86.10 (192.168.86.10)' can't be established.
+ED25519 key fingerprint is SHA256:/Siyugo+5FzEFRvoT4kHj4Tm0SwaQtUjGdiOuaq2Rrs.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
+Type **`yes`** and press Enter. 
+
+You should now be successfully logged into your fresh Raspberry Pi OS! You can proceed with installing Docker and getting your containers set up.
+
 </details>
 
 ## 🔗 Related Repositories
