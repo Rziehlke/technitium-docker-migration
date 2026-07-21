@@ -77,8 +77,6 @@ docker compose up -d
 This file defines the Technitium DNS container, port mappings, and persistent volumes.
 
 ```yaml
-version: '3.8'
-
 services:
   technitium-dns:
     image: technitium/dns-server:latest
