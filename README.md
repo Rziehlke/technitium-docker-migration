@@ -5,6 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![Docker](https://img.shields.io/badge/Docker-✓-blue)
 ![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-OS_64_bit_Lite-red)
+```
 
 ## 📖 Project Overview
 
