@@ -246,24 +246,24 @@ You can use the same PowerShell window where you got the error, or open a new on
 Run the following command to tell your PC to forget the old key for that IP address:
 
 ```bash
-ssh-keygen -R 192.168.86.10
+ssh-keygen -R 192.168.X.X
 ```
 
-You should see a message saying something like `# Host 192.168.86.10 found: line 8...` and `Updated C:\Users\rzieh/.ssh/known_hosts successfully.`
+You should see a message saying something like `# Host 192.168.X.X found: line 8...` and `Updated C:\Users\X/.ssh/known_hosts successfully.`
 
 ### Step 3: Connect again
 Now, try to SSH into your Pi again:
 
 ```bash
-ssh pi@192.168.86.10
+ssh pi@192.168.X.X
 ```
 
 ### Step 4: Accept the new fingerprint
 Because your PC forgot the old key, it will now see the Pi's *new* key. You will be prompted with a message like this:
 
 ```text
-The authenticity of host '192.168.86.10 (192.168.86.10)' can't be established.
-ED25519 key fingerprint is SHA256:/Siyugo+5FzEFRvoT4kHj4Tm0SwaQtUjGdiOuaq2Rrs.
+The authenticity of host '192.168.X.X (192.168.X.X)' can't be established.
+ED25519 key fingerprint is SHA256:/X.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
